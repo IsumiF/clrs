@@ -1,0 +1,47 @@
+cabal-version:       2.4
+name:                clrs
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/IsumiF/clrs#readme
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Isumi Feng
+maintainer:          contact@zelinf.net
+copyright:           (c) 2018, Isumi Feng
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+
+library
+  hs-source-dirs: src
+  exposed-modules:
+        Clrs.DynamicProgramming.RodCutting
+  other-modules:
+    Prelude
+  build-depends:
+      base-noprelude >= 4.12 && < 5
+    , relude ^>= 0.4.0
+    , vector
+    , containers
+  ghc-options: -Wall
+  default-language: Haskell2010
+
+test-suite clrs-test
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Spec.hs
+  other-modules:
+    Prelude
+        Clrs.DynamicProgramming.RodCuttingSpec
+  build-depends:
+      base-noprelude
+    , relude
+    , clrs
+    , hspec
+    , QuickCheck
+    , vector
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  default-language: Haskell2010
